@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ./database-test.js && next dev",
     "build": "next build",
     "start": "next start",
     "mock-server": "json-server --watch ./db.json -p 4001 -d 3000"
@@ -26,6 +26,8 @@
     "next": "^10.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "sqlite": "^4.0.15",
+    "sqlite3": "^5.0.0",
     "swr": "^0.3.8"
   },
   "devDependencies": {
