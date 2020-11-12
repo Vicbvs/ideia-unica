@@ -17,7 +17,7 @@ export default async function getPersonById(req: NextApiRequest, res: NextApiRes
         statement.finalize();
     }
 
-    const person = await db.all('SELECT * FROM person WHERE id = ?', [req.query.id]);
+    const person = await db.get('SELECT * FROM person WHERE id = ?', [req.query.id]);
 
     res.json(person);
 }
