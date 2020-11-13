@@ -8,15 +8,7 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 
     if(req.method === 'POST'){
         hash(req.body.password, 10, async function(err, hash) {
-            const statement = await db.prepare(
-                'INSERT INTO person (name, email, password) VALUES (? , ? , ?)'
-            );
-            const result = await statement.run(
-                req.body.name, 
-                req.body.email, 
-                hash
-            );
-            statement.finalize();
+            await db.run('INSERT INTO person (name, email, password) VALUES (? , ? , ?)', [req.body.name, req.body.email, hash]);
 
             const person = await db.all('SELECT * FROM person');
         
